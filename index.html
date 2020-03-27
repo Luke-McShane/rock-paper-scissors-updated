@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
+    </head>
+
+    <body>
+
+        <div id="outer">
+            <div id="buttonDiv">
+                <!--<button id="rock" class="btn">Rock</button>
+                <button id="paper" class="btn">Paper</button>
+                <button id="scissors" class="btn">Scissors</button>-->
+                <img src="C:\Users\admin\Pictures\Web Dev\rock.png" id="rock" class="btn">
+                <img src="C:\Users\admin\Pictures\Web Dev\paper.png" id="paper" class="btn">
+                <img src="C:\Users\admin\Pictures\Web Dev\scissors.png" id="scissors" class="btn">
+                
+            </div>
+            <div id="scoreDiv">
+                <p id="playerScore">Player Score: 0</p>
+                <p id="computerScore">Computer Score: 0</p>
+            </div>
+        </div>
+
+        <script>
+            function computerPlay () {
+                var options = ["ROCK", "PAPER", "SCISSORS"];
+                return options[Math.floor(Math.random() * 3)];
+            }
+
+            function endGame () {
+
+            }
+
+            function round() {
+                let currentComputerScore = parseInt(document.getElementById('computerScore').textContent.slice(-1));
+                let currentPlayerScore = parseInt(document.getElementById('playerScore').textContent.slice(-1));
+                
+                if (currentComputerScore === 5 || currentPlayerScore === 5){
+                    alert("The game is over! Refresh the page to play again!");
+                    return;
+                }
+
+                let computerSelection = computerPlay();
+                let playerSelection = this.id.toUpperCase();
+                
+                switch (playerSelection) {
+                    case "ROCK":
+                        if (computerSelection == "ROCK") {
+                            alert("The computer chose rock! It's a draw!");
+                        }
+                        else if (computerSelection == "PAPER") {
+                            alert("The computer chose paper! The computer wins this round!");
+                            currentComputerScore += 1;
+                            document.getElementById('computerScore').textContent = "Computer Score: " + currentComputerScore.toString();
+                        }
+                        else if (computerSelection == "SCISSORS") {
+                            alert("The computer chose scissors! You win this round!");  
+                            currentPlayerScore += 1;
+                            document.getElementById('playerScore').textContent = "Player Score: " + currentPlayerScore.toString();
+                        }
+                        break;
+                        
+                    case "PAPER":
+                        if (computerSelection == "ROCK"){
+                            alert("The computer chose rock! You Win this round!");
+                            currentPlayerScore += 1;
+                            document.getElementById('playerScore').textContent = "Player Score: " + currentPlayerScore.toString();
+                        }
+                        else if (computerSelection == "PAPER") {
+                            alert("The computer chose paper! It's a draw!");
+                        }
+                        else if (computerSelection == "SCISSORS") {
+                            alert("The computer chose scissors! The computer wins this round!");
+                            currentComputerScore += 1;
+                            document.getElementById('computerScore').textContent = "Computer Score: " + currentComputerScore.toString();
+                        }
+                        break;
+                        
+                    case "SCISSORS":
+                        if (computerSelection == "ROCK") {
+                            alert("The computer chose rock! The computer wins this round!");
+                            currentComputerScore += 1;
+                            document.getElementById('computerScore').textContent = "Computer Score: " + currentComputerScore.toString();
+                        }
+                        else if (computerSelection == "PAPER") {
+                            alert("The computer chose paper! You win this round!");
+                            currentPlayerScore += 1;
+                            document.getElementById('playerScore').textContent = "Player Score: " + currentPlayerScore.toString();
+                        }
+                        else if (computerSelection == "SCISSORS") {
+                            alert("The computer chose scissors! It's a draw!");
+                        }
+                        break;
+
+                    default:
+                        alert("Please input a valid option");
+                        return 
+                        break;
+                }
+                if (currentComputerScore === 5 || currentPlayerScore === 5){
+                    currentComputerScore === 5 ? alert("The computer wins! Refresh the page to play again!")
+                    : alert("You win! Refresh the page to play again!");
+                    return;
+                }
+            }
+
+            var computerScore = 0;
+            var playerScore = 0;
+            
+            const btns = document.querySelectorAll(".btn");
+            console.log(btns);
+            btns.forEach(btn => btn.addEventListener('click', round));
+            //btns.forEach(btn => console.log(btn.id));
+
+            // while(computerScore < 5 || playerScore < 5) {
+            //     var result = round(prompt("Rock, Paper, or Scissors?").toUpperCase(), computerPlay());
+            //     if (result == "DRAW") continue;
+            //     else if (result == "WIN") playerScore += 1;
+            //     else computerScore += 1;
+            // }
+            // if (computerScore == 5) alert("YOU ARE A LOSER!");
+            // else alert("YOU KICK ASS!");
+        </script>
+    </body>
+</html>
