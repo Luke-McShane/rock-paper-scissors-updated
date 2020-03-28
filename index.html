@@ -38,10 +38,12 @@
                 let currentComputerScore = parseInt(document.getElementById('computerScore').textContent.slice(-1));
                 let currentPlayerScore = parseInt(document.getElementById('playerScore').textContent.slice(-1));
                 
-                if (currentComputerScore === 5 || currentPlayerScore === 5){
-                    alert("The game is over! Refresh the page to play again!");
-                    return;
-                }
+                // if (currentComputerScore === 5 || currentPlayerScore === 5){
+                //     alert("The game is over! Have another game!");
+                //     document.getElementById('computerScore').textContent = "Computer Score: 0"
+                //     document.getElementById('playerScore').textContent = "Player Score: 0"
+                //     return;
+                // }
 
                 let computerSelection = computerPlay();
                 let playerSelection = this.id.toUpperCase();
@@ -101,8 +103,10 @@
                         break;
                 }
                 if (currentComputerScore === 5 || currentPlayerScore === 5){
-                    currentComputerScore === 5 ? alert("The computer wins! Refresh the page to play again!")
-                    : alert("You win! Refresh the page to play again!");
+                    currentComputerScore === 5 ? alert("The computer wins! Try again!")
+                    : alert("You win! See if you can with another game!");
+                    document.getElementById('computerScore').textContent = "Computer Score: 0"
+                    document.getElementById('playerScore').textContent = "Player Score: 0"
                     return;
                 }
             }
